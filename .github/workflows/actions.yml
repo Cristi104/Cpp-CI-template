@@ -1,0 +1,11 @@
+name: Actions
+run-name: test
+on: [push]
+jobs:
+  Test:
+  runs-on: ubuntu-latest
+  steps:
+    - run: echo test run
+    - name: test name
+    - run: exho test run 2
+    
