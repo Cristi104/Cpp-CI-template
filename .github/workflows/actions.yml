@@ -21,5 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update -y
+      - run: sudo apt-get install -y build-essentials
       - run: sudo apt-get install -y clang-tidy
+      - run: sudo apt-get install -y cmake
+      - run: cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
+      - run: make
       
