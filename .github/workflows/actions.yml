@@ -19,7 +19,6 @@ jobs:
   Clang-tidy:
     runs-on: ubuntu-latest
     steps:
-      - name: setup
       - uses: actions/checkout@v4
       - run: sudo apt-get update -y
       - run: sudo apt-get install -y clang-tidy
