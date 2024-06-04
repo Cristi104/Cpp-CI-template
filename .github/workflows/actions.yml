@@ -29,16 +29,18 @@ jobs:
       - run: run-clang-tidy -p "${CMAKE_BUILD_DIR}" -extra-arg=-std=c++20 -checks=cppcoreguidelines-*,bugprone-*,misc-*,performance-*,readability-*
   build:
     runs-on: ${{ matrix.os }}
-    matrix:
-      include:
-        - os: ubuntu-latest
-          cmake_flags: -DBUILD_SHARED_LIBS=FALSE
-          cmake_generator: Ninja
-          runs_valgid: true
-        - os: ubuntu-latest
-          cmake_flags: -DBUILD_SHARED_LIBS=FALSE
-          cmake_generator: Ninja
-          runs_asan: true
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            cmake_flags: -DBUILD_SHARED_LIBS=FALSE
+            cmake_generator: Ninja
+            runs_valgid: true
+          - os: ubuntu-latest
+            cmake_flags: -DBUILD_SHARED_LIBS=FALSE
+            cmake_generator: Ninja
+            runs_asan: true
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt-get update -y
