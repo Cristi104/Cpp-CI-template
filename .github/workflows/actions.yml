@@ -49,8 +49,8 @@ jobs:
       - run: sudo apt-get install -y cmake
       - run: cmake . -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Debug
       - run: make
-      - run: ./${CMAKE_PROJECT_NAME}
+      - run: ./${PROJECT_NAME}
       - if: runner.os == 'Linux' && matrix.runs_valgrind == true
-        run: sudo apt-get install --no-install-recommends valgrind && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose  ./${CMAKE_PROJECT_NAME}
+        run: sudo apt-get install --no-install-recommends valgrind && valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose  ./${PROJECT_NAME}
       
       
